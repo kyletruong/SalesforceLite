@@ -35,4 +35,8 @@ public class SaleList implements MenuItem, Serializable {
     public String toString() {
         return saleType;
     }
+
+    public void acceptSale(int index) {
+
+    }
 }
