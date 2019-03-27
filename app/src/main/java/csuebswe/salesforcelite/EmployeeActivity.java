@@ -5,17 +5,17 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import csuebswe.salesforcelite.controller.Menu;
+import csuebswe.salesforcelite.controller.MainMenu;
 
 public class EmployeeActivity extends AppCompatActivity implements EmployeeViewAdapter.ItemClickListener {
     EmployeeViewAdapter adapter;
-    Menu employeeMenu;
+    MainMenu employeeMainMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee);
-        employeeMenu = (Menu)getIntent().getSerializableExtra("employee_menu");
+        employeeMainMenu = (MainMenu)getIntent().getSerializableExtra("employee_menu");
 
         // TODO: delete. Rather pass the menu. I don't like passing a model to a view
         // employee = (EmployeeModel)getIntent().getSerializableExtra("employee_activity");
@@ -23,14 +23,14 @@ public class EmployeeActivity extends AppCompatActivity implements EmployeeViewA
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.rvEmployee);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new EmployeeViewAdapter(this, employeeMenu);
+        adapter = new EmployeeViewAdapter(this, employeeMainMenu);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        employeeMenu.executeMenuItemAt(this, position);
+        employeeMainMenu.executeMenuItemAt(this, position);
 
 //        if (position == 0) {
 //            Intent intent = new Intent(this, OpenSalesView.class);

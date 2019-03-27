@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import csuebswe.salesforcelite.model.User;
 
-public class Menu implements Serializable {
+public class MainMenu implements Serializable {
     List<MenuItem> menu;
     User user;
 
-    public Menu(User user) {
+    public MainMenu(User user) {
         menu = new ArrayList<>();
         this.user = user;
     }

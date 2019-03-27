@@ -6,17 +6,17 @@ import android.content.Context;
 import android.view.ViewGroup;
 import android.view.View;
 import android.widget.TextView;
-import csuebswe.salesforcelite.controller.Menu;
+import csuebswe.salesforcelite.controller.MainMenu;
 import csuebswe.salesforcelite.controller.MenuItem;
 
 public class EmployeeViewAdapter extends RecyclerView.Adapter<EmployeeViewAdapter.ViewHolder> {
 
-    private Menu mData;
+    private MainMenu mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    EmployeeViewAdapter(Context context, Menu data) {
+    EmployeeViewAdapter(Context context, MainMenu data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
