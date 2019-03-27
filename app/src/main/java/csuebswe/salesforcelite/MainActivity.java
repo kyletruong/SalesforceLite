@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import csuebswe.salesforcelite.controller.Menu;
+import csuebswe.salesforcelite.controller.SaleList;
 import csuebswe.salesforcelite.model.AllCustomers;
 import csuebswe.salesforcelite.model.AllEmployees;
 import csuebswe.salesforcelite.model.EmployeeModel;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         employees.addEmployee("kyle", "123", log, customers);
         customers.addCustomer("yang", "123", log);
         employees.getEmployee("kyle").offerNewSale("yang", "paper");
+        employees.getEmployee("kyle").offerNewSale("yang", "pencils");
+        employees.getEmployee("kyle").offerNewSale("yang", "staples");
 
         // TODO: implement a 'create account' page
 
@@ -48,9 +52,16 @@ public class MainActivity extends AppCompatActivity {
                 if (employees.contains(usr)) {
                     if (employees.getEmployeePassword(usr).equals(pw)) {
                         Toast.makeText(MainActivity.this,"Successful login",Toast.LENGTH_LONG).show();
+
+                        // Lots of stuff happening here, creating menu
                         EmployeeModel employee = employees.getEmployee(usr);
+                        Menu employeeMenu = new Menu(employee);
+                        employeeMenu.addMenuItem(new SaleList("Open Sales", employee.getOpenSales()));
+                        employeeMenu.addMenuItem(new SaleList("Closed Sales", employee.getClosedSales()));
+
+                        // Pass menu (controller) to next activity (view)
                         Intent intent = new Intent(MainActivity.this, EmployeeActivity.class);
-                        intent.putExtra("employee_activity", employee);
+                        intent.putExtra("employee_menu", employeeMenu);
                         startActivity(intent);
                     }
                 }
@@ -60,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     if (customers.getCustomerPassword(usr).equals(pw)) {
                         Toast.makeText(MainActivity.this,"Successful login",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
-                        intent.putExtra("customer_activity", customers.getCustomer(usr));
+                        intent.putExtra("customer_menu", customers.getCustomer(usr));
                         startActivity(intent);
                     }
                 }

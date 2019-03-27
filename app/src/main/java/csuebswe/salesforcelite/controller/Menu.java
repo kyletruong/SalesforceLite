@@ -1,14 +1,19 @@
 package csuebswe.salesforcelite.controller;
 
+import android.content.Context;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import csuebswe.salesforcelite.model.User;
 
 public class Menu implements Serializable {
     List<MenuItem> menu;
+    User user;
 
-    public Menu() {
+    public Menu(User user) {
         menu = new ArrayList<>();
+        this.user = user;
     }
 
     public void addMenuItem(MenuItem menuitem) {
@@ -21,5 +26,9 @@ public class Menu implements Serializable {
 
     public int size() {
         return menu.size();
+    }
+
+    public void executeMenuItemAt(Context callingContext, int index) {
+        menu.get(index).execute(callingContext);
     }
 }

@@ -8,12 +8,13 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class CustomerModel implements Serializable {
+public class CustomerModel implements Serializable, User {
     // Member fields
     private Map<Integer, Sale> openSales;
     private Map<Integer, Sale> closedSales;
     private Logger logger;
     private String username, password;
+    //Menu menu;
 
     // Constructor
     public CustomerModel(String usr, String pw, Logger log) {
@@ -22,7 +23,13 @@ public class CustomerModel implements Serializable {
         logger = log;
         username = usr;
         password = pw;
+
+        // TODO: Create the menu for customer
     }
+
+//    public void executeMenuItemAt(Context callingContext, int index) {
+//        menu.getMenuItem(index).execute(callingContext);
+//    }
 
     // Retrieve a new sale offer created by an employee
     public void retrieveNewSale(Sale sale) {

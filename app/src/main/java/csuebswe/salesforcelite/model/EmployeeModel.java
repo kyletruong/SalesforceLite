@@ -1,13 +1,9 @@
 package csuebswe.salesforcelite.model;
 
-import android.content.Context;
-
 import java.io.Serializable;
 import java.util.*;
-import csuebswe.salesforcelite.controller.Menu;
-import csuebswe.salesforcelite.controller.SaleList;
 
-public class EmployeeModel implements Serializable {
+public class EmployeeModel implements Serializable, User {
     // Member fields
     private Map<Integer, Sale> openSales;
     private Map<Integer, Sale> closedSales;
@@ -16,7 +12,7 @@ public class EmployeeModel implements Serializable {
     private Logger logger;
     private final int MAX_SALE_ID = 10000;
     private String username, password;
-    Menu menu;
+    // Menu menu; // TODO: delete, user shouldn't know about
 
     // Constructor
     public EmployeeModel(String usr, String pw, Logger log, AllCustomers customers) {
@@ -27,21 +23,19 @@ public class EmployeeModel implements Serializable {
         username = usr;
         password = pw;
 
-
-        menu = new Menu();
-        menu.addMenuItem(new SaleList("Open Sales", openSales));
-        menu.addMenuItem(new SaleList("Closed Sales", closedSales));
+        // TODO: nvm, delete this too. user shouldn't know about the menu
+        /**
+         * In the constructor is where the menu is created
+         */
+//        menu = new Menu();
+//        menu.addMenuItem(new SaleList("Open Sales", openSales));
+//        menu.addMenuItem(new SaleList("Closed Sales", closedSales));
 
         // TODO: delete
-        options = new ArrayList<>();
-        options.add("Open Sales");
-        options.add("Closed Sales");
-        options.add("New Sale");
-    }
-
-    // Retrieve a customer by their username -- helper method
-    private CustomerModel getCustomer(String username) {
-        return customers.getCustomer(username);
+//        options = new ArrayList<>();
+//        options.add("Open Sales");
+//        options.add("Closed Sales");
+//        options.add("New Sale");
     }
 
 
@@ -67,12 +61,23 @@ public class EmployeeModel implements Serializable {
         closedSales.put(sale_id, closedSale);
     }
 
-    public void executeMenuItemAt(Context callingContext, int index) {
-        menu.getMenuItem(index).execute(callingContext);
-    }
+    // TODO: delete, functionality moved to menu. Makes more sense
+//    public void executeMenuItemAt(Context callingContext, int index) {
+//        menu.getMenuItem(index).execute(callingContext);
+//    }
 
-    public Menu getMenu() {
-        return menu;
+    // TODO: delete
+//    public Menu getMenu() {
+//        return menu;
+//    }
+
+    /**
+     * Getters
+     */
+
+    // Retrieve a customer by their username -- helper method
+    private CustomerModel getCustomer(String username) {
+        return customers.getCustomer(username);
     }
 
     String getPassword() {
@@ -88,7 +93,7 @@ public class EmployeeModel implements Serializable {
     }
 
     // TODO: delete
-    public List<String> getOptions() {
-        return options;
-    }
+//    public List<String> getOptions() {
+//        return options;
+//    }
 }
