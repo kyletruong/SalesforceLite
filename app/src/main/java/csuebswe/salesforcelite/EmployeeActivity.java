@@ -7,8 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import csuebswe.salesforcelite.controller.MainMenu;
 
-public class EmployeeActivity extends AppCompatActivity implements EmployeeViewAdapter.ItemClickListener {
-    EmployeeViewAdapter adapter;
+public class EmployeeActivity extends AppCompatActivity implements MainMenuViewAdapter.ItemClickListener {
+    MainMenuViewAdapter adapter;
     MainMenu employeeMainMenu;
 
     @Override
@@ -23,7 +23,7 @@ public class EmployeeActivity extends AppCompatActivity implements EmployeeViewA
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.rvEmployee);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new EmployeeViewAdapter(this, employeeMainMenu);
+        adapter = new MainMenuViewAdapter(this, employeeMainMenu);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
