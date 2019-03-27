@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import csuebswe.salesforcelite.models.AllCustomers;
-import csuebswe.salesforcelite.models.AllEmployees;
-import csuebswe.salesforcelite.models.EmployeeModel;
-import csuebswe.salesforcelite.models.Logger;
+import csuebswe.salesforcelite.model.AllCustomers;
+import csuebswe.salesforcelite.model.AllEmployees;
+import csuebswe.salesforcelite.model.EmployeeModel;
+import csuebswe.salesforcelite.model.Logger;
 
 public class MainActivity extends AppCompatActivity {
     EditText username,password;
@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity {
         customers = new AllCustomers();
         log = new Logger();
 
-        // TODO: hardcode some employees and customers here
+        // TODO: hardcode employees, customers, and any other data here
         employees.addEmployee("kyle", "123", log, customers);
-
+        customers.addCustomer("yang", "123", log);
+        employees.getEmployee("kyle").offerNewSale("yang", "paper");
 
         // TODO: implement a 'create account' page
 

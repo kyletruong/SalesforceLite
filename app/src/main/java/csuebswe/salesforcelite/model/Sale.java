@@ -1,6 +1,10 @@
-package csuebswe.salesforcelite.models;
+package csuebswe.salesforcelite.model;
 
 import java.io.Serializable;
+
+// TODO: create name attribute and override toString() to display the name
+// TODO: fix how sales are represented in SaleListViewAdapter bc rn it just shows the id
+// TODO: also gotta fix when Sale is created in EmployeeModel
 
 /**
  * Represents a sale created by an employee and given to a customer
@@ -14,12 +18,14 @@ public class Sale implements Serializable
     private int id;
     private boolean rating;
     private boolean saleDecision;
+    private String name;
 
     // Constructor
-    public Sale(EmployeeModel em, CustomerModel cm, int sale_id) {
+    public Sale(EmployeeModel em, CustomerModel cm, int sale_id, String name) {
         employee = em;
         customer = cm;
         id = sale_id;
+        this.name = name;
     }
 
     // Setters
@@ -29,6 +35,10 @@ public class Sale implements Serializable
 
     public void setEmployee(EmployeeModel em) {
         employee = em;
+    }
+
+    public void setName(String n) {
+        name = n;
     }
 
     // Getters
@@ -42,5 +52,9 @@ public class Sale implements Serializable
 
     public CustomerModel getCustomer() {
         return customer;
+    }
+
+    public String getName() {
+        return name;
     }
 }
