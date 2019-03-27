@@ -1,4 +1,4 @@
-package csuebswe.salesforcelite.models;
+package csuebswe.salesforcelite.model;
 
 import java.io.Serializable;
 import java.util.HashMap;

@@ -2,23 +2,23 @@
  * Written by Kyle Truong
  */
 
-package csuebswe.salesforcelite.models;
+package csuebswe.salesforcelite.model;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class CustomerModel implements Serializable {
     // Member fields
-    public Map<Integer, Sale> openSales;
-    public Map<Integer, Sale> closedSales;
-    Logger logger;
+    private Map<Integer, Sale> openSales;
+    private Map<Integer, Sale> closedSales;
+    private Logger logger;
     private String username, password;
 
     // Constructor
     public CustomerModel(String usr, String pw, Logger log) {
-        openSales = new HashMap<>();
-        closedSales = new HashMap<>();
+        openSales = new LinkedHashMap<>();
+        closedSales = new LinkedHashMap<>();
         logger = log;
         username = usr;
         password = pw;

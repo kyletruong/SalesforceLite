@@ -6,19 +6,27 @@ import android.content.Context;
 import android.view.ViewGroup;
 import android.view.View;
 import android.widget.TextView;
-import csuebswe.salesforcelite.controller.Menu;
-import csuebswe.salesforcelite.controller.MenuItem;
 
-public class EmployeeViewAdapter extends RecyclerView.Adapter<EmployeeViewAdapter.ViewHolder> {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-    private Menu mData;
+import csuebswe.salesforcelite.model.Sale;
+
+public class SaleListViewAdapter extends RecyclerView.Adapter<SaleListViewAdapter.ViewHolder> {
+
+    private List<Sale> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    EmployeeViewAdapter(Context context, Menu data) {
+    SaleListViewAdapter(Context context, Map<Integer, Sale> data) {
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+
+        /**
+         * Cheeky way of turning map into iterable list for menu representation
+         */
+        mData = new ArrayList<>(data.values());
     }
 
     // inflates the row layout from xml when needed
@@ -31,7 +39,7 @@ public class EmployeeViewAdapter extends RecyclerView.Adapter<EmployeeViewAdapte
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String option = mData.getMenuItem(position).toString();
+        String option = mData.get(position).getName();
         holder.myTextView.setText(option);
     }
 
@@ -59,8 +67,8 @@ public class EmployeeViewAdapter extends RecyclerView.Adapter<EmployeeViewAdapte
     }
 
     // convenience method for getting data at click position
-    MenuItem getItem(int id) {
-        return mData.getMenuItem(id);
+    Sale getItem(int id) {
+        return mData.get(id);
     }
 
     // allows clicks events to be caught
