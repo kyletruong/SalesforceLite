@@ -6,10 +6,7 @@ import android.content.Context;
 import android.view.ViewGroup;
 import android.view.View;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import csuebswe.salesforcelite.model.Sale;
 
@@ -20,13 +17,13 @@ public class SaleListViewAdapter extends RecyclerView.Adapter<SaleListViewAdapte
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    SaleListViewAdapter(Context context, Map<Integer, Sale> data) {
+    SaleListViewAdapter(Context context, List<Sale> data) {
         this.mInflater = LayoutInflater.from(context);
 
         /**
          * Cheeky way of turning map into iterable list for menu representation
          */
-        mData = new ArrayList<>(data.values());
+        mData = data;
     }
 
     // inflates the row layout from xml when needed

@@ -5,13 +5,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
-import java.util.Map;
+import java.util.List;
 
 import csuebswe.salesforcelite.model.Sale;
 
 public class SaleListActivity extends AppCompatActivity implements SaleListViewAdapter.ItemClickListener {
-    Map<Integer, Sale> sales;
+    List<Sale> sales;
     SaleListViewAdapter adapter;
 
     @Override
@@ -19,7 +18,7 @@ public class SaleListActivity extends AppCompatActivity implements SaleListViewA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saleslist);
 
-        sales = (Map)getIntent().getSerializableExtra("salelist");
+        sales = (List)getIntent().getSerializableExtra("salelist");
         RecyclerView recyclerView = findViewById(R.id.rvSalesList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new SaleListViewAdapter(this, sales);

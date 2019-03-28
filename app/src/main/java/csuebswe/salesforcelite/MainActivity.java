@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import csuebswe.salesforcelite.controller.CloseSale;
 import csuebswe.salesforcelite.controller.MainMenu;
 import csuebswe.salesforcelite.controller.SaleList;
 import csuebswe.salesforcelite.model.AllCustomers;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         MainMenu customerMainMenu = new MainMenu(customer);
                         customerMainMenu.addMenuItem(new SaleList("Open Sales", customer.getOpenSales()));
                         customerMainMenu.addMenuItem(new SaleList("Closed Sales", customer.getClosedSales()));
+                        customerMainMenu.addMenuItem(new CloseSale("Accept/Decline Sale", customer.getOpenSales()));
 
                         Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
                         intent.putExtra("customer_menu", customerMainMenu);
