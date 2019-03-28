@@ -23,11 +23,9 @@ public class CustomerActivity extends AppCompatActivity implements MainMenuViewA
         adapter = new MainMenuViewAdapter(this, customerMainMenu);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
-
     }
 
     public void onItemClick(View view, int position) {
         customerMainMenu.executeMenuItemAt(this,position);
-
     }
 }

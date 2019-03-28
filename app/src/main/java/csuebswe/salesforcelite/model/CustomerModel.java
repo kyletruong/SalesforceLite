@@ -23,13 +23,7 @@ public class CustomerModel implements Serializable, User {
         logger = log;
         username = usr;
         password = pw;
-
-        // TODO: Create the menu for customer
     }
-
-//    public void executeMenuItemAt(Context callingContext, int index) {
-//        menu.getMenuItem(index).execute(callingContext);
-//    }
 
     // Retrieve a new sale offer created by an employee
     public void retrieveNewSale(Sale sale) {
