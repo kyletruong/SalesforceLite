@@ -6,20 +6,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import csuebswe.salesforcelite.SaleListActivity;
+import csuebswe.salesforcelite.CloseSaleActivity;
 import csuebswe.salesforcelite.model.Sale;
 
-public class SaleList implements MenuItem, Serializable {
+public class CloseSale implements MenuItem, Serializable {
     List<Sale> sales;
     String saleType;
 
     /**
      * Constructor
      *
-     * @param saleType   This should be either open sales / closed sales
+     * @param saleType      This should be either open sales / closed sales
      * @param sales         List of sale objects belonging to Employee or customer
      */
-    public SaleList(String saleType, Map<Integer, Sale> sales) {
+    public CloseSale(String saleType, Map<Integer, Sale> sales) {
         this.sales = new ArrayList<>(sales.values());
         this.saleType = saleType;
     }
@@ -28,8 +28,8 @@ public class SaleList implements MenuItem, Serializable {
     // the 'saleslist' string is a key for deserialization
     @Override
     public void execute(Context callingContext) {
-        Intent intent = new Intent(callingContext, SaleListActivity.class);
-        intent.putExtra("salelist", (Serializable)sales);
+        Intent intent = new Intent(callingContext, CloseSaleActivity.class);
+        intent.putExtra("closesale", (Serializable)sales);
         callingContext.startActivity(intent);
     }
 

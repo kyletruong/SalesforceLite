@@ -17,9 +17,6 @@ public class EmployeeActivity extends AppCompatActivity implements MainMenuViewA
         setContentView(R.layout.activity_employee);
         employeeMainMenu = (MainMenu)getIntent().getSerializableExtra("employee_menu");
 
-        // TODO: delete. Rather pass the menu. I don't like passing a model to a view
-        // employee = (EmployeeModel)getIntent().getSerializableExtra("employee_activity");
-
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.rvEmployee);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -31,24 +28,6 @@ public class EmployeeActivity extends AppCompatActivity implements MainMenuViewA
     @Override
     public void onItemClick(View view, int position) {
         employeeMainMenu.executeMenuItemAt(this, position);
-
-//        if (position == 0) {
-//            Intent intent = new Intent(this, OpenSalesView.class);
-//            intent.putExtra("OpenSales", employee);
-//            startActivity(intent);
-//        }
-//
-//        else if (position == 1) {
-//            Intent intent = new Intent(this, ClosedSalesView.class);
-//            intent.putExtra("ClosedSales", employee);
-//            startActivity(intent);
-//        }
-//
-//        else if (position == 2) {
-//            Intent intent = new Intent(this, NewSaleView.class);
-//            intent.putExtra("NewSale", employee);
-//            startActivity(intent);
-//        }
     }
 }
 

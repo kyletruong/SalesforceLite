@@ -12,7 +12,6 @@ public class EmployeeModel implements Serializable, User {
     private Logger logger;
     private final int MAX_SALE_ID = 10000;
     private String username, password;
-    // Menu menu; // TODO: delete, user shouldn't know about
 
     // Constructor
     public EmployeeModel(String usr, String pw, Logger log, AllCustomers customers) {
@@ -22,20 +21,6 @@ public class EmployeeModel implements Serializable, User {
         this.customers = customers;
         username = usr;
         password = pw;
-
-        // TODO: nvm, delete this too. user shouldn't know about the menu
-        /**
-         * In the constructor is where the menu is created
-         */
-//        menu = new Menu();
-//        menu.addMenuItem(new SaleList("Open Sales", openSales));
-//        menu.addMenuItem(new SaleList("Closed Sales", closedSales));
-
-        // TODO: delete
-//        options = new ArrayList<>();
-//        options.add("Open Sales");
-//        options.add("Closed Sales");
-//        options.add("New Sale");
     }
 
 
@@ -61,16 +46,6 @@ public class EmployeeModel implements Serializable, User {
         closedSales.put(sale_id, closedSale);
     }
 
-    // TODO: delete, functionality moved to menu. Makes more sense
-//    public void executeMenuItemAt(Context callingContext, int index) {
-//        menu.getMenuItem(index).execute(callingContext);
-//    }
-
-    // TODO: delete
-//    public Menu getMenu() {
-//        return menu;
-//    }
-
     /**
      * Getters
      */
@@ -91,9 +66,4 @@ public class EmployeeModel implements Serializable, User {
     public Map<Integer, Sale> getOpenSales() {
         return openSales;
     }
-
-    // TODO: delete
-//    public List<String> getOptions() {
-//        return options;
-//    }
 }
