@@ -1,7 +1,9 @@
 package csuebswe.salesforcelite.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AllCustomers implements Serializable {
@@ -28,7 +30,11 @@ public class AllCustomers implements Serializable {
         return customers.get(usr);
     }
 
+
+
     public String getCustomerPassword(String usr) {
         return customers.get(usr).getPassword();
     }
+
+    public Map getAllCustomers() { return customers; }
 }

@@ -75,9 +75,17 @@ public class EmployeeModel implements Serializable, User {
      * Getters
      */
 
+    public String getUsername() {
+        return username;
+    }
+
     // Retrieve a customer by their username -- helper method
     private CustomerModel getCustomer(String username) {
         return customers.getCustomer(username);
+    }
+
+    public AllCustomers getCustomers() {
+        return customers;
     }
 
     String getPassword() {

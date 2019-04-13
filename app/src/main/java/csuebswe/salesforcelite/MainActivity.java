@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import csuebswe.salesforcelite.controller.MainMenu;
+import csuebswe.salesforcelite.controller.NewSale;
 import csuebswe.salesforcelite.controller.SaleList;
 import csuebswe.salesforcelite.model.AllCustomers;
 import csuebswe.salesforcelite.model.AllEmployees;
@@ -33,8 +34,9 @@ public class MainActivity extends AppCompatActivity {
         log = new Logger();
 
         // TODO: hardcode employees, customers, and any other data here
-        employees.addEmployee("kyle", "123", log, customers);
         customers.addCustomer("yang", "123", log);
+        employees.addEmployee("kyle", "123", log, customers);
+
         employees.getEmployee("kyle").offerNewSale("yang", "paper");
         employees.getEmployee("kyle").offerNewSale("yang", "pencils");
         employees.getEmployee("kyle").offerNewSale("yang", "staples");
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         MainMenu employeeMainMenu = new MainMenu(employee);
                         employeeMainMenu.addMenuItem(new SaleList("Open Sales", employee.getOpenSales()));
                         employeeMainMenu.addMenuItem(new SaleList("Closed Sales", employee.getClosedSales()));
+                        employeeMainMenu.addMenuItem(new NewSale("New Sale", employee));
 
                         // Pass menu (controller) to next activity (view)
                         Intent intent = new Intent(MainActivity.this, EmployeeActivity.class);
@@ -70,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 else if (customers.contains(usr)) {
                     if (customers.getCustomerPassword(usr).equals(pw)) {
                         Toast.makeText(MainActivity.this,"Successful login",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
+                        Intent intent = new Intent(MainActivity.this, CustomerListActivity.class);
                         intent.putExtra("customer_menu", customers.getCustomer(usr));
                         startActivity(intent);
                     }
