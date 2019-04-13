@@ -1,6 +1,7 @@
 package csuebswe.salesforcelite.controller;
 
 import android.content.Context;
+import android.content.Intent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,4 +32,10 @@ public class MainMenu implements Serializable {
     public void executeMenuItemAt(Context callingContext, int index) {
         menu.get(index).execute(callingContext);
     }
+
+    public Intent getIntent(Context callingContext, int index) {
+        return menu.get(index).getIntent(callingContext);
+    }
+
+    public User getUser() { return user; }
 }

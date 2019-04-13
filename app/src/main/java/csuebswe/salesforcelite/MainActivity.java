@@ -77,10 +77,11 @@ public class MainActivity extends AppCompatActivity {
                         MainMenu customerMainMenu = new MainMenu(customer);
                         customerMainMenu.addMenuItem(new SaleList("Open Sales", customer.getOpenSales()));
                         customerMainMenu.addMenuItem(new SaleList("Closed Sales", customer.getClosedSales()));
-                        customerMainMenu.addMenuItem(new CloseSale("Accept/Decline Sale", customer.getOpenSales()));
+                        customerMainMenu.addMenuItem(new CloseSale("Accept Sale", customer.getOpenSales()));
 
                         Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
                         intent.putExtra("customer_menu", customerMainMenu);
+                        intent.putExtra("customer", customer);
                         startActivity(intent);
                     }
                 }

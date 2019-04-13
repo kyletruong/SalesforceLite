@@ -1,6 +1,7 @@
 package csuebswe.salesforcelite.controller;
 
 import android.content.Context;
+import android.content.Intent;
 
 public interface MenuItem {
     /**
@@ -9,4 +10,6 @@ public interface MenuItem {
      * @param callingContext   Requires the current context obj to move onto a new activity
      */
     public void execute(Context callingContext);
+
+    public Intent getIntent(Context callingContext);
 }
