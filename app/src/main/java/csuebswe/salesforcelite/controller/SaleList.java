@@ -37,4 +37,9 @@ public class SaleList implements MenuItem, Serializable {
     public String toString() {
         return saleType;
     }
+
+    @Override
+    public Intent getIntent(Context callingContext) {
+        return null;
+    }
 }

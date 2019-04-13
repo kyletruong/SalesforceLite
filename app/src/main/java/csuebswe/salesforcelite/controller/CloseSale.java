@@ -37,4 +37,10 @@ public class CloseSale implements MenuItem, Serializable {
     public String toString() {
         return saleType;
     }
+
+    @Override
+    public Intent getIntent(Context callingContext) {
+        Intent intent = new Intent(callingContext, CloseSaleActivity.class);
+        return intent;
+    }
 }
