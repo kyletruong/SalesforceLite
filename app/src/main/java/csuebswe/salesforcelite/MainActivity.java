@@ -12,6 +12,7 @@ import csuebswe.salesforcelite.controller.NewSale;
 import csuebswe.salesforcelite.controller.SaleList;
 import csuebswe.salesforcelite.model.AllCustomers;
 import csuebswe.salesforcelite.model.AllEmployees;
+import csuebswe.salesforcelite.model.CustomerModel;
 import csuebswe.salesforcelite.model.EmployeeModel;
 import csuebswe.salesforcelite.model.Logger;
 
@@ -73,8 +74,15 @@ public class MainActivity extends AppCompatActivity {
                 else if (customers.contains(usr)) {
                     if (customers.getCustomerPassword(usr).equals(pw)) {
                         Toast.makeText(MainActivity.this,"Successful login",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(MainActivity.this, CustomerListActivity.class);
-                        intent.putExtra("customer_menu", customers.getCustomer(usr));
+
+                        CustomerModel customer = customers.getCustomer(usr);
+                        MainMenu customerMainMenu = new MainMenu(customer);
+                        customerMainMenu.addMenuItem(new SaleList("Open Sales", customer.getOpenSales()));
+                        customerMainMenu.addMenuItem(new SaleList("Closed Sales", customer.getClosedSales()));
+                        customerMainMenu.addMenuItem(new SaleList("Accept/Decline Sale", customer.getOpenSales()));
+
+                        Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
+                        intent.putExtra("customer_menu", customerMainMenu);
                         startActivity(intent);
                     }
                 }

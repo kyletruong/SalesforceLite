@@ -52,4 +52,12 @@ public class CustomerModel implements Serializable, User {
     public String getPassword() {
         return password;
     }
+
+    public Map<Integer, Sale> getOpenSales() {
+        return openSales;
+    }
+
+    public Map<Integer, Sale> getClosedSales() {
+        return closedSales;
+    }
 }
