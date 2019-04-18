@@ -1,10 +1,10 @@
 package csuebswe.salesforcelite;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import csuebswe.salesforcelite.controller.MainMenu;
 
 public class EmployeeActivity extends AppCompatActivity implements MainMenuViewAdapter.ItemClickListener {
@@ -31,24 +31,6 @@ public class EmployeeActivity extends AppCompatActivity implements MainMenuViewA
     @Override
     public void onItemClick(View view, int position) {
         employeeMainMenu.executeMenuItemAt(this, position);
-
-//        if (position == 0) {
-//            Intent intent = new Intent(this, OpenSalesView.class);
-//            intent.putExtra("OpenSales", employee);
-//            startActivity(intent);
-//        }
-//
-//        else if (position == 1) {
-//            Intent intent = new Intent(this, ClosedSalesView.class);
-//            intent.putExtra("ClosedSales", employee);
-//            startActivity(intent);
-//        }
-//
-//        else if (position == 2) {
-//            Intent intent = new Intent(this, NewSaleView.class);
-//            intent.putExtra("NewSale", employee);
-//            startActivity(intent);
-//        }
     }
 }
 

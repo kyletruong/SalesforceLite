@@ -1,29 +1,15 @@
 package csuebswe.salesforcelite;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-
-
-
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.content.Context;
 import android.view.ViewGroup;
-import android.view.View;
 import android.widget.TextView;
-
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import csuebswe.salesforcelite.model.AllCustomers;
 import csuebswe.salesforcelite.model.CustomerModel;
 import csuebswe.salesforcelite.model.EmployeeModel;
-import csuebswe.salesforcelite.model.Sale;
 
 public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapter.ViewHolder> {
 
